@@ -1,0 +1,40 @@
+body {
+  margin: 2rem auto;
+  max-width: 50rem;
+  text-align: center;
+}
+
+
+form {
+  display: inline-block;
+  text-align: left;
+}
+
+form .errorlist {
+  list-style-type: none;
+  padding: 0;
+  
+  color: var(--red);
+}
+
+ul {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0;
+
+  text-align: left;
+}
+
+li {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.delete-document {
+  float: right;
+  margin-left: 1rem;
+  width: 0.5rem;
+
+  text-decoration: none;
+  text-align: right;
+  color: var(--red);
+}

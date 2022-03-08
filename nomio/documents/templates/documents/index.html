@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'documents.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <img src="{% static 'logo.png' %}" alt="Nomio Logo" />
+
+  <h1>Your Documents</h1>
+  <h3>Duplicates are not allowed therefore won't be uploaded, thanks!</h3>
+
+  <ul>
+    {% for document in documents %}
+      <li>
+          <a href="{% url 'documents:download' document.id %}" target="_blank">{{ document.title }}</a>
+          <a class="delete-document" href="{% url 'documents:delete' document.id %}">×</a>
+      </li>
+    {% empty %}
+      <li><i>(No documents uploaded!)</i></li>
+    {% endfor %}
+  </ul>
+
+  <h2>Upload</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.files }}
+    <button type="submit">Upload</button>
+    {{ form.file.errors }}
+  </form>
+{% endblock %}
